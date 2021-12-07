@@ -22,7 +22,9 @@ solve = minimum . costs simpleCost
 
 sumCost :: [Int] -> Int -> Int
 sumCost [] _ = 0
-sumCost (x : xs) y = sum [1 .. (abs (x - y))] + sumCost xs y
+sumCost (x : xs) y = c (abs (x - y)) + sumCost xs y
+  where
+    c n = (n * (n - 1)) `div` 2 + n
 
 solve2 :: [Int] -> Int
 solve2 = minimum . costs sumCost
